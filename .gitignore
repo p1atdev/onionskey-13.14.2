@@ -67,3 +67,8 @@ temp
 
 # VSCode addon
 .favorites.json
+
+# Tor
+hostname
+hs_*_public_key
+hs_*_secret_key
