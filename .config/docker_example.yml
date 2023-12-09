@@ -6,7 +6,7 @@
 #───┘ URL └─────────────────────────────────────────────────────
 
 # Final accessible URL seen by a user.
-url: https://example.tld/
+url: https://example.onion/
 
 # ONCE YOU HAVE STARTED THE INSTANCE, DO NOT CHANGE THE
 # URL SETTINGS AFTER THAT!
@@ -56,17 +56,17 @@ dbReplications: false
 # You can configure any number of replicas here
 #dbSlaves:
 #  -
-#    host: 
-#    port: 
-#    db: 
-#    user: 
-#    pass: 
+#    host:
+#    port:
+#    db:
+#    user:
+#    pass:
 #  -
-#    host: 
-#    port: 
-#    db: 
-#    user: 
-#    pass: 
+#    host:
+#    port:
+#    db:
+#    user:
+#    pass:
 
 #   ┌─────────────────────┐
 #───┘ Redis configuration └─────────────────────────────────────
@@ -148,7 +148,7 @@ id: 'aid'
 #outgoingAddressFamily: ipv4
 
 # Proxy for HTTP/HTTPS
-#proxy: http://127.0.0.1:3128
+proxy: http://tor:8118
 
 proxyBypassHosts:
   - api.deepl.com
@@ -166,7 +166,7 @@ proxyBypassHosts:
 #mediaProxy: https://example.com/proxy
 
 # Proxy remote files (default: false)
-#proxyRemoteFiles: true
+proxyRemoteFiles: true
 
 # Sign to ActivityPub GET request (default: true)
 signToActivityPubGet: true

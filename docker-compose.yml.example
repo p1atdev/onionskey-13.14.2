@@ -4,10 +4,6 @@ services:
   web:
     build: .
     restart: always
-    links:
-      - db
-      - redis
-#     - meilisearch
     depends_on:
       db:
         condition: service_healthy
@@ -60,6 +56,17 @@ services:
 #      - internal_network
 #    volumes:
 #      - ./meili_data:/meili_data
+
+	tor:
+    build:
+      context: .
+      dockerfile: Dockerfile.tor
+    restart: always
+    networks:
+      - internal_network
+      - external_network
+    volumes:
+      - ./tor:/etc/tor
 
 networks:
   internal_network:
