@@ -1,5 +1,6 @@
 #!/bin/sh
 
-chmod 700 /etc/tor/hidden_service
+chown -R root /etc/tor
+chmod 700 -R /etc/tor/hidden_service
 
 exec "$@"

@@ -1,4 +1,4 @@
 HiddenServiceDir /etc/tor/hidden_service/
 HiddenServicePort 80 web:3000
-SocksPort 0.0.0.0:9050
 HTTPTunnelPort 0.0.0.0:8118
+ExitPolicy reject *:*
