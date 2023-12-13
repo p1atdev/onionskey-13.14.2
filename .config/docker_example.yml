@@ -148,7 +148,7 @@ id: 'aid'
 #outgoingAddressFamily: ipv4
 
 # Proxy for HTTP/HTTPS
-proxy: http://tor:8118
+proxy: socks5h://tor:9050
 
 proxyBypassHosts:
   - api.deepl.com

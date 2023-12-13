@@ -9,6 +9,8 @@ services:
         condition: service_healthy
       redis:
         condition: service_healthy
+		environment:
+      - MISSKEY_WEBFINGER_USE_HTTP=true
     ports:
       - "3000:3000"
     networks:
