@@ -1,4 +1,4 @@
-lockfileVersion: '6.1'
+lockfileVersion: '6.0'
 
 settings:
   autoInstallPeers: true
@@ -338,6 +338,9 @@ importers:
       slacc:
         specifier: 0.0.10
         version: 0.0.10
+      socks-proxy-agent:
+        specifier: ^8.0.2
+        version: 8.0.2
       strict-event-emitter-types:
         specifier: 2.0.0
         version: 2.0.0
@@ -5256,8 +5259,9 @@ packages:
   /@mapbox/node-pre-gyp@1.0.9:
     resolution: {integrity: sha512-aDF3S3rK9Q2gey/WAttUlISduDItz5BU3306M9Eyv6/oS40aMprnopshtlKTykxRNIBEZuRMaZAnbrQ4QtKGyw==}
     hasBin: true
+    requiresBuild: true
     dependencies:
-      detect-libc: 2.0.1
+      detect-libc: 2.0.2
       https-proxy-agent: 5.0.1
       make-dir: 3.1.0
       node-fetch: 2.6.11
@@ -7709,6 +7713,7 @@ packages:
   /@tensorflow/tfjs-backend-cpu@4.4.0(@tensorflow/tfjs-core@4.4.0):
     resolution: {integrity: sha512-d4eln500/qNym78z9IrUUzF0ITBoJGLrxV8xd92kLVoXhg35Mm+zqUXShjFcrH8joOHOFuST0qZ0TbDDqcPzPA==}
     engines: {yarn: '>= 1.3.2'}
+    requiresBuild: true
     peerDependencies:
       '@tensorflow/tfjs-core': 4.4.0
     dependencies:
@@ -7720,6 +7725,7 @@ packages:
   /@tensorflow/tfjs-backend-webgl@4.4.0(@tensorflow/tfjs-core@4.4.0):
     resolution: {integrity: sha512-TzQKvfAPgGt9cMG+5bVoTckoG1xr/PVJM/uODkPvzcMqi3j97kuWDXwkYJIgXldStmfiKkU7f5CmyD3Cq3E6BA==}
     engines: {yarn: '>= 1.3.2'}
+    requiresBuild: true
     peerDependencies:
       '@tensorflow/tfjs-core': 4.4.0
     dependencies:
@@ -7733,6 +7739,7 @@ packages:
 
   /@tensorflow/tfjs-converter@4.4.0(@tensorflow/tfjs-core@4.4.0):
     resolution: {integrity: sha512-JUjpRStrAuw37tgPd5UENu0UjQVuJT09yF7KpOur4BriJ0uQqrbEZHMPHmvUtr5nYzkqlXJTuXIyxvEY/olNpg==}
+    requiresBuild: true
     peerDependencies:
       '@tensorflow/tfjs-core': 4.4.0
     dependencies:
@@ -7742,6 +7749,7 @@ packages:
   /@tensorflow/tfjs-core@4.4.0:
     resolution: {integrity: sha512-Anxpc7cAOA0Q7EUXdTbQKMg3reFvrdkgDlaYzH9ZfkMq2CgLV4Au6E/s6HmbYn/VrAtWy9mLY5c/lLJqh4764g==}
     engines: {yarn: '>= 1.3.2'}
+    requiresBuild: true
     dependencies:
       '@types/long': 4.0.2
       '@types/offscreencanvas': 2019.7.0
@@ -7757,6 +7765,7 @@ packages:
 
   /@tensorflow/tfjs-data@4.4.0(@tensorflow/tfjs-core@4.4.0)(seedrandom@3.0.5):
     resolution: {integrity: sha512-aY4eq4cgrsrXeBU6ABZAAN3tV0fG4YcHd0z+cYuNXnCo+VEQLJnPmhn+xymZ4VQZQH4GXbVS4dV9pXMclFNRFw==}
+    requiresBuild: true
     peerDependencies:
       '@tensorflow/tfjs-core': 4.4.0
       seedrandom: ^3.0.5
@@ -7772,6 +7781,7 @@ packages:
 
   /@tensorflow/tfjs-layers@4.4.0(@tensorflow/tfjs-core@4.4.0):
     resolution: {integrity: sha512-OGC7shfiD9Gc698hINHK4y9slOJvu5m54tVNm4xf+WSNrw/avvgpar6yyoL5bakYIZNQvFNK75Yr8VRPR7oPeQ==}
+    requiresBuild: true
     peerDependencies:
       '@tensorflow/tfjs-core': 4.4.0
     dependencies:
@@ -7801,6 +7811,7 @@ packages:
   /@tensorflow/tfjs@4.4.0(seedrandom@3.0.5):
     resolution: {integrity: sha512-EmCsnzdvawyk4b+4JKaLLuicHcJQRZtL1zSy9AWJLiiHTbDDseYgLxfaCEfLk8v2bUe7SBXwl3n3B7OjgvH11Q==}
     hasBin: true
+    requiresBuild: true
     dependencies:
       '@tensorflow/tfjs-backend-cpu': 4.4.0(@tensorflow/tfjs-core@4.4.0)
       '@tensorflow/tfjs-backend-webgl': 4.4.0(@tensorflow/tfjs-core@4.4.0)
@@ -8210,6 +8221,7 @@ packages:
 
   /@types/long@4.0.2:
     resolution: {integrity: sha512-MqTGEo5bj5t157U6fA/BiDynNkn0YknVdh48CMPkTSpFTVmvao5UQmm7uEF6xBEo7qIMAlY/JSleYaE6VOdpaA==}
+    requiresBuild: true
     dev: false
 
   /@types/matter-js@0.18.5:
@@ -8294,10 +8306,12 @@ packages:
 
   /@types/offscreencanvas@2019.3.0:
     resolution: {integrity: sha512-esIJx9bQg+QYF0ra8GnvfianIY8qWB0GBx54PK5Eps6m+xTj86KLavHv6qDhzKcu5UUOgNfJ2pWaIIV7TRUd9Q==}
+    requiresBuild: true
     dev: false
 
   /@types/offscreencanvas@2019.7.0:
     resolution: {integrity: sha512-PGcyveRIpL1XIqK8eBsmRBt76eFgtzuPiSTyKHZxnGemp2yzGzWpjYKAfK3wIMiU7eH+851yEpiuP8JZerTmWg==}
+    requiresBuild: true
     dev: false
 
   /@types/pg@8.10.2:
@@ -8386,6 +8400,7 @@ packages:
 
   /@types/seedrandom@2.4.30:
     resolution: {integrity: sha512-AnxLHewubLVzoF/A4qdxBGHCKifw8cY32iro3DQX9TPcetE95zBeVt3jnsvtvAUf1vwzMfwzp4t/L2yqPlnjkQ==}
+    requiresBuild: true
     dev: false
 
   /@types/semver@7.5.0:
@@ -8501,6 +8516,7 @@ packages:
 
   /@types/webgl-ext@0.0.30:
     resolution: {integrity: sha512-LKVgNmBxN0BbljJrVUwkxwRYqzsAEPcZOe6S2T6ZaBDIrFp0qu4FNlpc5sM1tGbXUYFgdVQIoeLk1Y1UoblyEg==}
+    requiresBuild: true
     dev: false
 
   /@types/websocket@1.0.5:
@@ -8924,6 +8940,7 @@ packages:
 
   /@webgpu/types@0.1.30:
     resolution: {integrity: sha512-9AXJSmL3MzY8ZL//JjudA//q+2kBRGhLBFpkdGksWIuxrMy81nFrCzj2Am+mbh8WoU6rXmv7cY5E3rdlyru2Qg==}
+    requiresBuild: true
     dev: false
 
   /@xmldom/xmldom@0.8.6:
@@ -9016,12 +9033,14 @@ packages:
   /adm-zip@0.5.10:
     resolution: {integrity: sha512-x0HvcHqVJNTPk/Bw8JbLWlWoo6Wwnsug0fnYYro1HBrjxZ3G7/AZk7Ahv8JwDe1uIcz8eBqvu86FuF1POiG7vQ==}
     engines: {node: '>=6.0'}
+    requiresBuild: true
     dev: false
     optional: true
 
   /agent-base@4.3.0:
     resolution: {integrity: sha512-salcGninV0nPrwpGNn4VTXBb1SOuXQBiqbrNXoeizJsHrsL6ERFM2Ne3JUSBWRE6aeNJI2ROP/WEEIDUiDe3cg==}
     engines: {node: '>= 4.0.0'}
+    requiresBuild: true
     dependencies:
       es6-promisify: 5.0.0
     dev: false
@@ -11378,12 +11397,6 @@ packages:
     engines: {node: '>=8'}
     dev: true
 
-  /detect-libc@2.0.1:
-    resolution: {integrity: sha512-463v3ZeIrcWtdgIg6vI6XUncguvr2TnGl4SzDXinkt9mSLpBJKXT3mW6xT3VQdDN11+WVs29pgvivTc4Lp8v+w==}
-    engines: {node: '>=8'}
-    dev: false
-    optional: true
-
   /detect-libc@2.0.2:
     resolution: {integrity: sha512-UX6sGumvvqSaXgdKGUsgZWqcUyIXZ/vZTrlRT/iobiKhGL0zL4d3osHj3uqllWJK+i+sixDS/3COVEOFbupFyw==}
     engines: {node: '>=8'}
@@ -11715,11 +11728,13 @@ packages:
 
   /es6-promise@4.2.8:
     resolution: {integrity: sha512-HJDGx5daxeIvxdBxvG2cb9g4tEvwIk3i8+nhX0yGrYmZUzbkdg8QbDevheDB8gd0//uPj4c1EQua8Q+MViT0/w==}
+    requiresBuild: true
     dev: false
     optional: true
 
   /es6-promisify@5.0.0:
     resolution: {integrity: sha512-C+d6UdsYDk0lMebHNR4S2NybQMMngAOnOwYBQjTOiv0MkoJMP0Myw2mgpDLBcpfCmRLxyFqYhS/CfOENq4SJhQ==}
+    requiresBuild: true
     dependencies:
       es6-promise: 4.2.8
     dev: false
@@ -12941,6 +12956,7 @@ packages:
 
   /fs-minipass@1.2.7:
     resolution: {integrity: sha512-GWSSJGFy4e9GUeCcbIkED+bgAoFyj7XF1mV8rma3QW4NIqX9Kyx79N/PF61H5udOV3aY1IaMLs6pGbH71nlCTA==}
+    requiresBuild: true
     dependencies:
       minipass: 2.9.0
     dev: false
@@ -13312,6 +13328,7 @@ packages:
 
   /google-protobuf@3.21.2:
     resolution: {integrity: sha512-3MSOYFO5U9mPGikIYCzK0SaThypfGgS6bHqrUGXG3DPHCrb+txNqeEcns1W0lkGfk0rCyNXm7xB9rMxnCiZOoA==}
+    requiresBuild: true
     dev: false
     optional: true
 
@@ -13759,6 +13776,7 @@ packages:
   /https-proxy-agent@2.2.4:
     resolution: {integrity: sha512-OmvfoQ53WLjtA9HeYP9RNrWMJzzAz1JGaSFr1nijg0PVR1JaD/xbJq1mdEIIlxGpXp9eSe/O2LgU9DJmTPd0Eg==}
     engines: {node: '>= 4.5.0'}
+    requiresBuild: true
     dependencies:
       agent-base: 4.3.0
       debug: 3.2.7(supports-color@5.5.0)
@@ -15658,6 +15676,7 @@ packages:
 
   /long@4.0.0:
     resolution: {integrity: sha512-XsP+KhQif4bjX1kbuSiySJFNAehNxgLb6hPRGJ9QsUr8ajHkuXGdrHmFUTUUXhDwVX2R5bY4JNZEwbUiMhV+MA==}
+    requiresBuild: true
     dev: false
 
   /loose-envify@1.4.0:
@@ -16099,6 +16118,7 @@ packages:
 
   /minipass@2.9.0:
     resolution: {integrity: sha512-wxfUjg9WebH+CUDX/CdbRlh5SmfZiy/hpkxaRI16Y9W56Pa75sWgd/rvFilSgrauD9NyFymP/+JFV3KwzIsJeg==}
+    requiresBuild: true
     dependencies:
       safe-buffer: 5.2.1
       yallist: 3.1.1
@@ -16122,6 +16142,7 @@ packages:
 
   /minizlib@1.3.3:
     resolution: {integrity: sha512-6ZYMOEnmVsdCeTJVE0W9ZD+pVnE8h9Hma/iOwwRDsdQoePpoX56/8B6z3P9VNwppJuBKNRuFDRNRqRWexT9G9Q==}
+    requiresBuild: true
     dependencies:
       minipass: 2.9.0
     dev: false
@@ -16478,12 +16499,14 @@ packages:
   /node-gyp-build-optional-packages@5.0.7:
     resolution: {integrity: sha512-YlCCc6Wffkx0kHkmam79GKvDQ6x+QZkMjFGrIMxgFNILFvGSbCp2fCBC55pGTT9gVaz8Na5CLmxt/urtzRv36w==}
     hasBin: true
+    requiresBuild: true
     dev: false
     optional: true
 
   /node-gyp-build@4.6.0:
     resolution: {integrity: sha512-NTZVKn9IylLwUzaKjkas1e4u2DLNcV4rdYagA4PWdPwW87Bi7z+BznyKSRwS/761tV/lzCGXplWsiaMjLqP2zQ==}
     hasBin: true
+    requiresBuild: true
 
   /node-gyp@9.4.0:
     resolution: {integrity: sha512-dMXsYP6gc9rRbejLXmTbVRYjAHw7ppswsKyMxuxJxxOHzluIO1rGp9TOQgjFJ+2MCqcOcQTOPB/8Xwhr+7s4Eg==}
@@ -16550,6 +16573,7 @@ packages:
     resolution: {integrity: sha512-Tbj67rffqceeLpcRXrT7vKAN8CwfPeIBgM7E6iBkmKLV7bEMwpGgYLGv0jACUsECaa/vuxP0IjEont6umdMgtQ==}
     engines: {node: '>=6'}
     hasBin: true
+    requiresBuild: true
     dependencies:
       abbrev: 1.1.1
     dev: false
@@ -19450,6 +19474,17 @@ packages:
       - supports-color
     dev: false
 
+  /socks-proxy-agent@8.0.2:
+    resolution: {integrity: sha512-8zuqoLv1aP/66PHF5TqwJ7Czm3Yv32urJQHrVyhD7mmA6d61Zv8cIXQYPTWwmg6qlupnPvs/QKDmfa4P/qct2g==}
+    engines: {node: '>= 14'}
+    dependencies:
+      agent-base: 7.1.0
+      debug: 4.3.4(supports-color@8.1.1)
+      socks: 2.7.1
+    transitivePeerDependencies:
+      - supports-color
+    dev: false
+
   /socks@2.7.1:
     resolution: {integrity: sha512-7maUZy1N7uo6+WVEX6psASxtNlKaNVMlGQKkG/63nEDdLOWNbiUMoLK7X4uYoLhQstau72mLgfEWcXcwsaHbYQ==}
     engines: {node: '>= 10.13.0', npm: '>= 3.0.0'}
@@ -20022,6 +20057,7 @@ packages:
   /tar@4.4.19:
     resolution: {integrity: sha512-a20gEsvHnWe0ygBY8JbxoM4w3SJdhc7ZAuxkLqh+nvNQN2IOt0B5lLgM490X5Hl8FF0dl0tOf2ewFYAlIFgzVA==}
     engines: {node: '>=4.5'}
+    requiresBuild: true
     dependencies:
       chownr: 1.1.4
       fs-minipass: 1.2.7

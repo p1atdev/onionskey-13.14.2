@@ -10,7 +10,38 @@ import type { Config } from '@/config.js';
 import { StatusError } from '@/misc/status-error.js';
 import { bindThis } from '@/decorators.js';
 import type { Response } from 'node-fetch';
-import type { URL } from 'node:url';
+import type { URL as URLType } from 'node:url';
+import { SocksProxyAgent } from 'socks-proxy-agent';
+
+function getHttpProxyAgent({proxy, ...config}: any): http.Agent {
+	const url = new URL(proxy);
+
+	switch (url.protocol) {
+		case 'socks5:':
+		case 'socks5h:':
+			return new SocksProxyAgent(proxy, config);
+		default:
+			return new HttpProxyAgent({
+				proxy: proxy,
+				...config,
+			});
+	}
+}
+
+function getHttpsProxyAgent({proxy, ...config}: any): https.Agent {
+	const url = new URL(proxy);
+
+	switch (url.protocol) {
+		case 'socks5:':
+		case 'socks5h:':
+			return new SocksProxyAgent(proxy, config);
+		default:
+			return new HttpsProxyAgent({
+				proxy: proxy,
+				...config,
+			});
+	}
+}
 
 @Injectable()
 export class HttpRequestService {
@@ -59,7 +90,7 @@ export class HttpRequestService {
 		const maxSockets = Math.max(256, config.deliverJobConcurrency ?? 128);
 
 		this.httpAgent = config.proxy
-			? new HttpProxyAgent({
+			? getHttpProxyAgent({
 				keepAlive: true,
 				keepAliveMsecs: 30 * 1000,
 				maxSockets,
@@ -70,7 +101,7 @@ export class HttpRequestService {
 			: this.http;
 
 		this.httpsAgent = config.proxy
-			? new HttpsProxyAgent({
+			? getHttpsProxyAgent({
 				keepAlive: true,
 				keepAliveMsecs: 30 * 1000,
 				maxSockets,
@@ -87,7 +118,7 @@ export class HttpRequestService {
 	 * @param bypassProxy Allways bypass proxy
 	 */
 	@bindThis
-	public getAgentByUrl(url: URL, bypassProxy = false): http.Agent | https.Agent {
+	public getAgentByUrl(url: URLType, bypassProxy = false): http.Agent | https.Agent {
 		if (bypassProxy || (this.config.proxyBypassHosts || []).includes(url.hostname)) {
 			return url.protocol === 'http:' ? this.http : this.https;
 		} else {
