@@ -1,7 +1,8 @@
 import { Inject, Injectable } from '@nestjs/common';
+import { IsNull, Not } from 'typeorm';
 import type { LocalUser, RemoteUser } from '@/models/entities/User.js';
 import { InstanceActorService } from '@/core/InstanceActorService.js';
-import type { NotesRepository, PollsRepository, NoteReactionsRepository, UsersRepository } from '@/models/index.js';
+import type { NotesRepository, PollsRepository, NoteReactionsRepository, UsersRepository, FollowRequestsRepository, FollowRequest } from '@/models/index.js';
 import type { Config } from '@/config.js';
 import { MetaService } from '@/core/MetaService.js';
 import { HttpRequestService } from '@/core/HttpRequestService.js';
@@ -27,6 +28,7 @@ export class Resolver {
 		private notesRepository: NotesRepository,
 		private pollsRepository: PollsRepository,
 		private noteReactionsRepository: NoteReactionsRepository,
+		private followRequestsRepository: FollowRequestsRepository,
 		private utilityService: UtilityService,
 		private instanceActorService: InstanceActorService,
 		private metaService: MetaService,
@@ -141,13 +143,25 @@ export class Resolver {
 				return this.noteReactionsRepository.findOneByOrFail({ id: parsed.id }).then(async reaction =>
 					this.apRendererService.addContext(await this.apRendererService.renderLike(reaction, { uri: null })));
 			case 'follows':
-				// rest should be <followee id>
-				if (parsed.rest == null || !/^\w+$/.test(parsed.rest)) throw new Error('resolveLocal: invalid follow URI');
+				return this.followRequestsRepository.findOneBy({ id: parsed.id })
+					.then(async (followRequest: FollowRequest) => {
+						if (followRequest == null) throw new Error('resolveLocal: invalid follow request ID');
+						const [follower, followee] = await Promise.all([
+							this.usersRepository.findOneBy({
+								id: followRequest.followerId,
+								host: IsNull(),
+							}),
+							this.usersRepository.findOneBy({
+								id: followRequest.followeeId,
+								host: Not(IsNull()),
+							}),
+						]);
+						if (follower == null || followee == null) {
+							throw new Error('resolveLocal: follower or followee does not exist');
+						}
+						return this.apRendererService.addContext(this.apRendererService.renderFollow(follower as LocalUser | RemoteUser, followee as LocalUser | RemoteUser, url));
+					});
 
-				return Promise.all(
-					[parsed.id, parsed.rest].map(id => this.usersRepository.findOneByOrFail({ id })),
-				)
-					.then(([follower, followee]) => this.apRendererService.addContext(this.apRendererService.renderFollow(follower as LocalUser | RemoteUser, followee as LocalUser | RemoteUser, url)));
 			default:
 				throw new Error(`resolveLocal: type ${parsed.type} unhandled`);
 		}
@@ -172,6 +186,10 @@ export class ApResolverService {
 		@Inject(DI.noteReactionsRepository)
 		private noteReactionsRepository: NoteReactionsRepository,
 
+		@Inject(DI.followRequestsRepository)
+		private followRequestsRepository: FollowRequestsRepository,
+
+
 		private utilityService: UtilityService,
 		private instanceActorService: InstanceActorService,
 		private metaService: MetaService,
@@ -191,6 +209,7 @@ export class ApResolverService {
 			this.notesRepository,
 			this.pollsRepository,
 			this.noteReactionsRepository,
+			this.followRequestsRepository,
 			this.utilityService,
 			this.instanceActorService,
 			this.metaService,
